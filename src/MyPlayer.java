@@ -13,8 +13,16 @@ public class MyPlayer {
          */
 
 
-for(int x = 0)
+        for (int x = 3; x > 0; x--) {
+            for (int q = x; q > -1; q--) {
+                for (int w = q; w > -1; w--) {
+                    System.out.println(x+"" + q + w);
+                }
 
+
+            }
+
+        }
     }
 
     public Point move(Chip[][] pBoard) {
