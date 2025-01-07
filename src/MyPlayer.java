@@ -17,12 +17,22 @@ public class MyPlayer {
             for (int q = x; q > -1; q--) {
                 for (int w = q; w > -1; w--) {
                     System.out.println(x+"" + q + w);
+                    for (int e = w; e > -1; e--) {
+                    for (int r = q; r>-1; r--){
+                    for (int t = x; t>-1; t--)  {
+                        System.out.println(e+""+r+t);
+                    }
+
+
+                    }
+                    }
                 }
 
 
             }
 
         }
+
     }
 
     public Point move(Chip[][] pBoard) {
