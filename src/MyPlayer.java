@@ -3,6 +3,7 @@ import java.awt.*;
 public class MyPlayer {
     public Chip[][] gameBoard;
     public int[] columns;
+    public boolean win;
 
     public MyPlayer() {
         columns = new int[10];
@@ -17,22 +18,38 @@ public class MyPlayer {
             for (int q = x; q > -1; q--) {
                 for (int w = q; w > -1; w--) {
                     System.out.println(x+"" + q + w);
-                    for (int e = w; e > -1; e--) {
-                    for (int r = q; r>-1; r--){
-                    for (int t = x; t>-1; t--)  {
-                        System.out.println(e+""+r+t);
+                    System.out.println("resulting boards");
+                    for (int e = w-1; e > -1; e--) {
+                        System.out.println(x + "" + q + e);
                     }
+                        for (int r = q - 1; r > -1; r--) {
+                            if (r < w) {
+                                System.out.println(x + "" + r + r);
+                            }
+                            else{
+                                System.out.println(x + ""+ r+w);
+                            }
+                        }
+                       for (int t = x-1; t>0; t--)  {
+                           if (t < q) {
+                               System.out.println(t + "" + t + t);
+                           }
+                           else{
+                               System.out.println(t + ""+ q+w);
+                           }
 
 
+
+                       }
+
+                    System.out.println("end of resulting boards ");
                     }
-                    }
-                }
 
 
             }
 
         }
-
+boardSort();
     }
 
     public Point move(Chip[][] pBoard) {
@@ -55,5 +72,10 @@ public class MyPlayer {
         Point myMove = new Point(row, column);
         return myMove;
     }
+    public void boardSort(){
 
-}
+        }
+    }
+
+
+
