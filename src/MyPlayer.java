@@ -3,10 +3,18 @@ import java.awt.*;
 public class MyPlayer {
     public Chip[][] gameBoard;
     public int[] columns;
+    public Board[] allboards;
+    public Board[] winBoard;
+    public Board[] loseBoard;
     public boolean win;
 
     public MyPlayer() {
         columns = new int[10];
+        allboards = new Board [19];
+        winBoard = new Board [14];
+        loseBoard = new Board [5];
+        Board lose = new Board(1,0,0);
+        loseBoard [0] = lose;
 
         /***
          * This code will run just once, when the game opens.
