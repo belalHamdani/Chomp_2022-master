@@ -7,6 +7,7 @@ public class MyPlayer {
     public Board[] winBoard;
     public Board[] loseBoard;
     public boolean win;
+    public int c = 0;
 
     public MyPlayer() {
         columns = new int[10];
@@ -22,28 +23,54 @@ public class MyPlayer {
          */
 
 
-        for (int x = 3; x > 0; x--) {
-            for (int q = x; q > -1; q--) {
-                for (int w = q; w > -1; w--) {
+        for (int x = 1; x < 4; x++) {
+            for (int q = 0; q < x; q++) {
+                for (int w = 0; w <q; w++) {
                     System.out.println(x+"" + q + w);
+                    Board b = new Board(x,q,w);
+
+                    allboards[c] = b;
+
+
                     System.out.println("resulting boards");
                     for (int e = w-1; e > -1; e--) {
                         System.out.println(x + "" + q + e);
+                        if(x==loseBoard[0].first && q==loseBoard[0].second&& w==loseBoard[0].third){
+                            System.out.println("you win");
+
+                        }
                     }
+
                         for (int r = q - 1; r > -1; r--) {
                             if (r < w) {
                                 System.out.println(x + "" + r + r);
+                                if(x==loseBoard[0].first && r==loseBoard[0].second&& r==loseBoard[0].third){
+                                    System.out.println("you win");
+
+                                }
                             }
                             else{
                                 System.out.println(x + ""+ r+w);
+                                if(x==loseBoard[0].first && r==loseBoard[0].second&& w==loseBoard[0].third){
+                                    System.out.println("you win");
+
+                                }
                             }
                         }
                        for (int t = x-1; t>0; t--)  {
                            if (t < q) {
                                System.out.println(t + "" + t + t);
+                               if(x==loseBoard[0].first && t==loseBoard[0].second&& t==loseBoard[0].third){
+                                   System.out.println("you win");
+
+                               }
                            }
                            else{
                                System.out.println(t + ""+ q+w);
+                               if(t==loseBoard[0].first && q==loseBoard[0].second&& w==loseBoard[0].third){
+                                   System.out.println("you win");
+
+                               }
                            }
 
 
@@ -51,6 +78,7 @@ public class MyPlayer {
                        }
 
                     System.out.println("end of resulting boards ");
+                    c++;
                     }
 
 

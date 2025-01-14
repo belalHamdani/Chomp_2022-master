@@ -15,7 +15,7 @@ public class Board {
 
 
     }
-    public Board Winner(){
-        win == true;
+    public void Winner(){
+        win = true;
     }
 }
