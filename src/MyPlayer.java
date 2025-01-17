@@ -9,15 +9,17 @@ public class MyPlayer {
     //public boolean win;
     public int c = 0;
     int numLOSE = 0;
+    int bestRow;
+    int bestColumn;
 
     public MyPlayer() {
         columns = new int[10];
-        allboards = new Board [19];
-        winBoard = new Board [14];
-        loseBoard = new Board [5];
-        Board lose = new Board(1,0,0);
-       // loseBoard [0] = lose;
-     //   numLOSE =1;
+        allboards = new Board[19];
+        winBoard = new Board[14];
+        loseBoard = new Board[5];
+        Board lose = new Board(1, 0, 0);
+        // loseBoard [0] = lose;
+        //   numLOSE =1;
 
         /***
          * This code will run just once, when the game opens.
@@ -27,86 +29,143 @@ public class MyPlayer {
 
         for (int x = 1; x < 4; x++) {
             for (int q = 0; q <= x; q++) {
-                for (int w = 0; w <=q; w++) {
-                    System.out.println(x+"" + q + w);
-                    Board b = new Board(x,q,w);
+                for (int w = 0; w <= q; w++) {
+                    System.out.println(x + "" + q + w);
+                    Board b = new Board(x, q, w);
 
                     allboards[c] = b;
-boolean win = false;
+                    boolean win = false;
 
                     System.out.println("resulting boards");
-                    for (int e = w-1; e > -1; e--) {
+                    for (int e = w - 1; e > -1; e--) {
                         System.out.println(x + "" + q + e);
-                        for(int tt = 0; tt<numLOSE; tt++) {
+                        for (int tt = 0; tt < numLOSE; tt++) {
                             if (x == loseBoard[tt].first && q == loseBoard[tt].second && e == loseBoard[tt].third) {
                                 System.out.println("you win");
                                 win = true;
+                                if (x - loseBoard[tt].first != 0) {
+                                    System.out.println("column = 0" + "\n row =" + loseBoard[tt].first);
 
+                                } else {
+                                    if (q - loseBoard[tt].second != 0) {
+                                        System.out.println("column = 1" + "\n row =" + loseBoard[tt].second);
+                                    } else {
+                                        if (w - loseBoard[tt].third != 0) {
+                                            System.out.println("column = 2" + "\n row =" + loseBoard[tt].third);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
 
-                        for (int r = q - 1; r >-1; r--) {
-                            if (r < w) {
-                                System.out.println(x + "" + r + r);
-                                for(int tt = 0; tt<numLOSE; tt++) {
-                                    if (x == loseBoard[tt].first && r == loseBoard[tt].second && r == loseBoard[tt].third) {
-                                        System.out.println("you win");
-                                        win = true;
+                    for (int r = q - 1; r > -1; r--) {
+                        if (r < w) {
+                            System.out.println(x + "" + r + r);
+                            for (int tt = 0; tt < numLOSE; tt++) {
+                                if (x == loseBoard[tt].first && r == loseBoard[tt].second && r == loseBoard[tt].third) {
+                                    System.out.println("you win");
+                                    win = true;
+                                    if (x - loseBoard[tt].first != 0) {
+                                        System.out.println("column = 0" + "\n row =" + loseBoard[tt].first);
+
+                                    } else {
+                                        if (q - loseBoard[tt].second != 0) {
+                                            System.out.println("column = 1" + "\n row =" + loseBoard[tt].second);
+                                        } else {
+                                            if (w - loseBoard[tt].third != 0) {
+                                                System.out.println("column = 2" + "\n row =" + loseBoard[tt].third);
+                                            }
+                                        }
                                     }
                                 }
                             }
-                            else{
-                                System.out.println(x + ""+ r+w);
-                                for(int tt = 0; tt<numLOSE; tt++) {
-                                    if (x == loseBoard[tt].first && r == loseBoard[tt].second && w == loseBoard[tt].third) {
-                                        System.out.println("you win");
-                                        win = true;
+                        } else {
+                            System.out.println(x + "" + r + w);
+                            for (int tt = 0; tt < numLOSE; tt++) {
+                                if (x == loseBoard[tt].first && r == loseBoard[tt].second && w == loseBoard[tt].third) {
+                                    System.out.println("you win");
+                                    win = true;
+                                    if (x - loseBoard[tt].first != 0) {
+                                        System.out.println("column = 0" + "\n row =" + loseBoard[tt].first);
+
+                                    } else {
+                                        if (q - loseBoard[tt].second != 0) {
+                                            System.out.println("column = 1" + "\n row =" + loseBoard[tt].second);
+                                        } else {
+                                            if (w - loseBoard[tt].third != 0) {
+                                                System.out.println("column = 2" + "\n row =" + loseBoard[tt].third);
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
-                       for (int t = x-1; t>-1; t--)  {
-                           if (t < q) {
-                               System.out.println(t + "" + t + t);
-                               for(int tt = 0; tt<numLOSE; tt++) {
-                                   if (t == loseBoard[tt].first && t == loseBoard[tt].second && t == loseBoard[tt].third) {
-                                       System.out.println("you win");
-                                       win = true;
-                                   }
-                               }
-                           }
-                           else{
-                               System.out.println(t + ""+ q+w);
-                               for(int tt = 0; tt<numLOSE; tt++) {
-                                   if (t == loseBoard[tt].first && q == loseBoard[tt].second && w == loseBoard[tt].third) {
-                                       System.out.println("you win");
-                                       win = true;
-                                   }
-                               }
-                           }
+                    }
+                    for (int t = x - 1; t > -1; t--) {
+                        if (t < q) {
+                            System.out.println(t + "" + t + t);
+                            for (int tt = 0; tt < numLOSE; tt++) {
+                                if (t == loseBoard[tt].first && t == loseBoard[tt].second && t == loseBoard[tt].third) {
+                                    System.out.println("you win");
+                                    win = true;
+                                    if (x - loseBoard[tt].first != 0) {
+                                        System.out.println("column = 0" + "\n row =" + loseBoard[tt].first);
+
+                                    } else {
+                                        if (q - loseBoard[tt].second != 0) {
+                                            System.out.println("column = 1" + "\n row =" + loseBoard[tt].second);
+                                        } else {
+                                            if (w - loseBoard[tt].third != 0) {
+                                                System.out.println("column = 2" + "\n row =" + loseBoard[tt].third);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            System.out.println(t + "" + q + w);
+                            for (int tt = 0; tt < numLOSE; tt++) {
+                                if (t == loseBoard[tt].first && q == loseBoard[tt].second && w == loseBoard[tt].third) {
+                                    System.out.println("you win");
+                                    win = true;
+                                    if (x - loseBoard[tt].first != 0) {
+                                        System.out.println("column = 0" + "\n row =" + loseBoard[tt].first);
+
+                                    } else {
+                                        if (q - loseBoard[tt].second != 0) {
+                                            System.out.println("column = 1" + "\n row =" + loseBoard[tt].second);
+                                        } else {
+                                            if (w - loseBoard[tt].third != 0) {
+                                                System.out.println("column = 2" + "\n row =" + loseBoard[tt].third);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
 
 
+                    }
 
-                       }
+                    if (win == false) {
+                        System.out.println("you lose");
+                        //todo: add b to losebard array at locagtion numlose
+                        //todo: incrase numlose by 1
+                        loseBoard[numLOSE] = b;
+                        numLOSE++;
+                        System.out.println("column = 0" + "\n row =");
 
-                       if(win == false){
-                           System.out.println("you lose");
-                           //todo: add b to losebard array at locagtion numlose
-                           //todo: incrase numlose by 1
-                           loseBoard[numLOSE] = b;
-                           numLOSE++;
-
-                       }
+                    }
                     System.out.println("end of resulting boards ");
                     c++;
-                    }
+                }
 
 
             }
 
         }
-boardSort();
+        boardSort();
     }
 
     public Point move(Chip[][] pBoard) {
@@ -129,10 +188,11 @@ boardSort();
         Point myMove = new Point(row, column);
         return myMove;
     }
-    public void boardSort(){
 
-        }
+    public void boardSort() {
+
     }
+}
 
 
 
