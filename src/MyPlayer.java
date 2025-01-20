@@ -45,13 +45,18 @@ public class MyPlayer {
                                 win = true;
                                 if (x - loseBoard[tt].first != 0) {
                                     System.out.println("column = 0" + "\n row =" + loseBoard[tt].first);
-
+                                    b.rows = loseBoard[tt].first;
+                                    b.columns = 0;
                                 } else {
                                     if (q - loseBoard[tt].second != 0) {
                                         System.out.println("column = 1" + "\n row =" + loseBoard[tt].second);
+                                        b.rows = loseBoard[tt].second;
+                                        b.columns = 1;
                                     } else {
                                         if (w - loseBoard[tt].third != 0) {
                                             System.out.println("column = 2" + "\n row =" + loseBoard[tt].third);
+                                            b.rows = loseBoard[tt].third;
+                                            b.columns = 2;
                                         }
                                     }
                                 }
@@ -68,13 +73,18 @@ public class MyPlayer {
                                     win = true;
                                     if (x - loseBoard[tt].first != 0) {
                                         System.out.println("column = 0" + "\n row =" + loseBoard[tt].first);
-
+                                        b.rows = loseBoard[tt].first;
+                                        b.columns = 0;
                                     } else {
                                         if (q - loseBoard[tt].second != 0) {
                                             System.out.println("column = 1" + "\n row =" + loseBoard[tt].second);
+                                            b.rows = loseBoard[tt].second;
+                                            b.columns = 1;
                                         } else {
                                             if (w - loseBoard[tt].third != 0) {
                                                 System.out.println("column = 2" + "\n row =" + loseBoard[tt].third);
+                                                b.rows = loseBoard[tt].third;
+                                                b.columns = 2;
                                             }
                                         }
                                     }
@@ -88,13 +98,19 @@ public class MyPlayer {
                                     win = true;
                                     if (x - loseBoard[tt].first != 0) {
                                         System.out.println("column = 0" + "\n row =" + loseBoard[tt].first);
+                                        b.rows = loseBoard[tt].first;
+                                        b.columns = 0;
 
                                     } else {
                                         if (q - loseBoard[tt].second != 0) {
                                             System.out.println("column = 1" + "\n row =" + loseBoard[tt].second);
+                                            b.rows = loseBoard[tt].second;
+                                            b.columns = 1;
                                         } else {
                                             if (w - loseBoard[tt].third != 0) {
                                                 System.out.println("column = 2" + "\n row =" + loseBoard[tt].third);
+                                                b.rows = loseBoard[tt].third;
+                                                b.columns = 2;
                                             }
                                         }
                                     }
@@ -111,13 +127,19 @@ public class MyPlayer {
                                     win = true;
                                     if (x - loseBoard[tt].first != 0) {
                                         System.out.println("column = 0" + "\n row =" + loseBoard[tt].first);
+                                        b.rows = loseBoard[tt].first;
+                                        b.columns = 0;
 
                                     } else {
                                         if (q - loseBoard[tt].second != 0) {
                                             System.out.println("column = 1" + "\n row =" + loseBoard[tt].second);
+                                            b.rows = loseBoard[tt].second;
+                                            b.columns = 1;
                                         } else {
                                             if (w - loseBoard[tt].third != 0) {
                                                 System.out.println("column = 2" + "\n row =" + loseBoard[tt].third);
+                                                b.rows = loseBoard[tt].third;
+                                                b.columns = 2;
                                             }
                                         }
                                     }
@@ -131,13 +153,19 @@ public class MyPlayer {
                                     win = true;
                                     if (x - loseBoard[tt].first != 0) {
                                         System.out.println("column = 0" + "\n row =" + loseBoard[tt].first);
+                                        b.rows = loseBoard[tt].first;
+                                        b.columns = 0;
 
                                     } else {
                                         if (q - loseBoard[tt].second != 0) {
                                             System.out.println("column = 1" + "\n row =" + loseBoard[tt].second);
+                                            b.rows = loseBoard[tt].second;
+                                            b.columns = 1;
                                         } else {
                                             if (w - loseBoard[tt].third != 0) {
                                                 System.out.println("column = 2" + "\n row =" + loseBoard[tt].third);
+                                                b.rows = loseBoard[tt].third;
+                                                b.columns = 2;
                                             }
                                         }
                                     }
@@ -155,6 +183,8 @@ public class MyPlayer {
                         loseBoard[numLOSE] = b;
                         numLOSE++;
                         System.out.println("column = 0" + "\n row =");
+                        b.rows = 0;
+                        b.columns = 0;
 
                     }
                     System.out.println("end of resulting boards ");
@@ -165,7 +195,7 @@ public class MyPlayer {
             }
 
         }
-        boardSort();
+
     }
 
     public Point move(Chip[][] pBoard) {
@@ -176,8 +206,29 @@ public class MyPlayer {
         int column = 0;
         int row = 0;
 
+        for (int i = 0; i < columns.length; i++) {
+            columns[i] = 0;
+        }
+        for (int r = 0; r < gameBoard.length; r++) {
+            for (int c = 0; c < gameBoard[r].length; c++) {
+                if (gameBoard[r][c].isAlive) {
+                    columns[c]++;
+                }
+            }
+        }
+
+
         row = 1;
         column = 1;
+
+        for(int g = 0; g < allboards.length; g++){
+            if( columns[0] == allboards[g].first && columns[1] == allboards[g].second && columns[2] == allboards[g].third){
+                row= allboards[g].rows;
+                column= allboards[g].columns;
+            }
+
+        }
+
 
         /***
          * This code will run each time the "MyPlayer" button is pressed.
@@ -189,10 +240,4 @@ public class MyPlayer {
         return myMove;
     }
 
-    public void boardSort() {
-
-    }
 }
-
-
-
